@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rauf Airlines — Fleet & Luxury Cabin Gallery</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Syne & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- External Custom Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- External Tailwind Configuration -->
+    <script src="js/tailwind-config.js"></script>
+</head>
+<body class="bg-nude-100 text-jet font-sans antialiased selection:bg-jet selection:text-white min-h-screen flex flex-col justify-between overflow-x-hidden">
+
+    <!-- ================= BACKGROUND CAROUSEL ================= -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-nude-100/80 via-nude-100/40 to-nude-100 z-10"></div>
+        <img id="carousel-bg-1" src="https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?q=80&w=2069&auto=format&fit=crop" class="bg-carousel-img absolute inset-0 w-full h-full object-cover scale-105 opacity-100" alt="Cinematic Cloud Sky">
+        <img id="carousel-bg-2" src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=2070&auto=format&fit=crop" class="bg-carousel-img absolute inset-0 w-full h-full object-cover scale-100 opacity-0" alt="Cabin Suite">
+    </div>
+
+    <!-- ================= HEADER ================= -->
+    <header class="relative z-50 px-6 py-4">
+        <nav class="max-w-7xl mx-auto glass-box rounded-2xl px-6 py-3 flex items-center justify-between shadow-sm">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 bg-jet text-white rounded-xl flex items-center justify-center transition-transform group-hover:rotate-12 duration-300 shadow-sm">
+                    <!-- R Letter Flight Silhouette Custom Logo -->
+                    <svg viewBox="0 0 64 64" class="w-6 h-6 fill-none stroke-current" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M 16 12 V 52" stroke-width="5.5"/>
+                        <path d="M 16 14 C 36 10, 48 18, 48 29 C 48 40, 36 42, 16 42" stroke-width="5"/>
+                        <path d="M 30 40 L 48 52" stroke-width="5.5"/>
+                        <path d="M 24 8 L 52 20 L 42 26 Z" fill="currentColor" stroke="none"/>
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-syne font-extrabold text-xl tracking-tight text-jet">RAUF</span>
+                    <span class="text-[9px] tracking-[0.3em] font-semibold text-gray-500 uppercase -mt-1">Gallery Module</span>
+                </div>
+            </a>
+
+            <div class="hidden md:flex items-center gap-2 bg-white/40 p-1.5 rounded-xl border border-white/60 text-xs font-semibold">
+                <a href="index.html" class="px-4 py-2 rounded-lg text-gray-600 hover:text-jet hover:bg-white/60 transition-all">HOME</a>
+                <a href="search.html" class="px-4 py-2 rounded-lg text-gray-600 hover:text-jet hover:bg-white/60 transition-all">FLIGHT SEARCH</a>
+                <a href="index.html#status" class="px-4 py-2 rounded-lg text-gray-600 hover:text-jet hover:bg-white/60 transition-all">LIVE SCHEDULE</a>
+                <a href="image.html" class="px-4 py-2 rounded-lg bg-jet text-white shadow-sm">FLEET GALLERY</a>
+                <a href="admin.html" class="px-4 py-2 rounded-lg text-gray-600 hover:text-jet hover:bg-white/60 transition-all">ADMIN PORTAL</a>
+                <a href="login.html" class="px-4 py-2 rounded-lg text-gray-600 hover:text-jet hover:bg-white/60 transition-all">LOGIN</a>
+            </div>
+
+            <a href="search.html" class="bg-jet hover:bg-gray-800 text-white text-xs font-bold px-5 py-2.5 rounded-xl transition-all flex items-center gap-2">
+                <span>BOOK FLIGHT</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+        </nav>
+    </header>
+
+    <!-- ================= MAIN GALLERY SECTION ================= -->
+    <main class="relative z-20 flex-grow max-w-7xl w-full mx-auto px-6 py-6 space-y-8">
+
+        <!-- Section Title Banner -->
+        <div class="text-center pt-4 pb-2 space-y-2">
+            <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 border text-jet text-xs font-bold uppercase tracking-wider shadow-xs">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-500"></i> High-Resolution Cinematic Visual Experience
+            </span>
+            <h1 class="font-syne font-extrabold text-4xl md:text-6xl text-jet uppercase">LUXURY FLEET & CABIN GALLERY</h1>
+            <p class="text-xs text-gray-500 font-medium max-w-xl mx-auto">Immerse yourself in Rauf Airlines' flagship aircraft, private first class suites, and award-winning onboard amenities.</p>
+        </div>
+
+        <!-- Interactive Fleet Specifications Console Card -->
+        <div class="glass-box rounded-3xl p-6 md:p-8 space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-gray-200/60 pb-4">
+                <div>
+                    <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest block">Aeronautical Engineering Data</span>
+                    <h2 class="font-syne font-extrabold text-2xl md:text-3xl text-jet">FLAGSHIP FLEET SPECIFICATIONS</h2>
+                </div>
+                
+                <div class="flex gap-2">
+                    <button onclick="switchFleetSpec('a350')" id="spec-btn-a350" class="fleet-spec-btn px-4 py-2 rounded-xl text-xs font-bold bg-jet text-white shadow-xs transition-all">Airbus A350-1000</button>
+                    <button onclick="switchFleetSpec('b787')" id="spec-btn-b787" class="fleet-spec-btn px-4 py-2 rounded-xl text-xs font-bold text-gray-600 hover:bg-white transition-all">Boeing 787-10</button>
+                    <button onclick="switchFleetSpec('g700')" id="spec-btn-g700" class="fleet-spec-btn px-4 py-2 rounded-xl text-xs font-bold text-gray-600 hover:bg-white transition-all">Gulfstream G700</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4" id="fleet-specs-container">
+                <!-- Dynamic Specs Cards Rendered by js/gallery.js -->
+            </div>
+        </div>
+
+        <!-- Filter Category Pills -->
+        <div class="flex flex-wrap items-center justify-center gap-2 max-w-3xl mx-auto bg-white/50 p-2 rounded-2xl border border-white">
+            <button onclick="filterCategory('all')" id="filter-btn-all" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-jet text-white transition-all">All Photos (16)</button>
+            <button onclick="filterCategory('fleet')" id="filter-btn-fleet" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold text-gray-600 hover:bg-white transition-all">Aircraft Fleet</button>
+            <button onclick="filterCategory('cabin')" id="filter-btn-cabin" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold text-gray-600 hover:bg-white transition-all">First Class Suites</button>
+            <button onclick="filterCategory('dining')" id="filter-btn-dining" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold text-gray-600 hover:bg-white transition-all">Gourmet Dining</button>
+            <button onclick="filterCategory('lounge')" id="filter-btn-lounge" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold text-gray-600 hover:bg-white transition-all">Sky Lounges</button>
+        </div>
+
+        <!-- Gallery Grid (20 High-Res Cards) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="gallery-grid">
+            
+            <!-- Image Card 1 -->
+            <div class="gallery-card group relative h-80 rounded-3xl overflow-hidden shadow-lg border border-white cursor-pointer" data-category="fleet" onclick="openLightbox('https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?q=80&w=1600', 'Airbus A350-1000 Carbon Wing', 'Aircraft Fleet • 4K UHD')">
+                <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Airbus A350">
+                <div class="absolute inset-0 bg-gradient-to-t from-jet via-jet/20 to-transparent opacity-75 group-hover:opacity-85 transition-opacity"></div>
+                <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] text-white font-bold uppercase tracking-wider">AIRCRAFT</div>
+                <div class="absolute bottom-0 p-5 text-white space-y-1">
+                    <span class="text-[10px] font-bold text-emerald-400 uppercase tracking-widest">Flagship Airliner</span>
+                    <h3 class="font-syne font-bold text-xl">AIRBUS A350-1000</h3>
+                    <p class="text-[11px] text-gray-300">Ultra-quiet carbon composite engineering</p>
+                </div>
+            </div>
+
+            <!-- Image Card 2 -->
+            <div class="gallery-card group relative h-80 rounded-3xl overflow-hidden shadow-lg border border-white cursor-pointer" data-category="cabin" onclick="openLightbox('https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1600', 'Enclosed First Class Suite', 'Cabin Suite • Lie-Flat Bed')">
+                <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="First Class Suite">
+                <div class="absolute inset-0 bg-gradient-to-t from-jet via-jet/20 to-transparent opacity-75 group-hover:opacity-85 transition-opacity"></div>
+                <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] text-white font-bold uppercase tracking-wider">FIRST SUITE</div>
+                <div class="absolute bottom-0 p-5 text-white space-y-1">
+                    <span class="text-[10px] font-bold text-amber-400 uppercase tracking-widest">Private Residence</span>
+                    <h3 class="font-syne font-bold text-xl">FIRST CLASS SUITE POD</h3>
+                    <p class="text-[11px] text-gray-300">Sliding doors & memory foam mattress</p>
+                </div>
+            </div>
+
+            <!-- Image Card 3 -->
+            <div class="gallery-card group relative h-80 rounded-3xl overflow-hidden shadow-lg border border-white cursor-pointer" data-category="dining" onclick="openLightbox('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1600', 'Michelin-Starred In-Flight Gastronomy', 'Gourmet Dining • Fine Wines')">
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Gourmet Dining">
+                <div class="absolute inset-0 bg-gradient-to-t from-jet via-jet/20 to-transparent opacity-75 group-hover:opacity-85 transition-opacity"></div>
+                <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] text-white font-bold uppercase tracking-wider">DINING</div>
+                <div class="absolute bottom-0 p-5 text-white space-y-1">
+                    <span class="text-[10px] font-bold text-purple-300 uppercase tracking-widest">3-Star Culinary Course</span>
+                    <h3 class="font-syne font-bold text-xl">HIGH-ALTITUDE GASTRONOMY</h3>
+                    <p class="text-[11px] text-gray-300">Plated gourmet dining by master chefs</p>
+                </div>
+            </div>
+
+            <!-- Image Card 4 -->
+            <div class="gallery-card group relative h-80 rounded-3xl overflow-hidden shadow-lg border border-white cursor-pointer" data-category="lounge" onclick="openLightbox('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1600', 'Exclusive Sky Lounge Bar', 'Sky Lounge • Cocktails')">
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Sky Lounge">
+                <div class="absolute inset-0 bg-gradient-to-t from-jet via-jet/20 to-transparent opacity-75 group-hover:opacity-85 transition-opacity"></div>
+                <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] text-white font-bold uppercase tracking-wider">LOUNGE</div>
+                <div class="absolute bottom-0 p-5 text-white space-y-1">
+                    <span class="text-[10px] font-bold text-sky-400 uppercase tracking-widest">Onboard Social Lounge</span>
+                    <h3 class="font-syne font-bold text-xl">THE CELESTIAL SKY BAR</h3>
+                    <p class="text-[11px] text-gray-300">Craft mixology & sommelier wine bar</p>
+                </div>
+            </div>
+
+            <!-- Image Card 5 -->
+            <div class="gallery-card group relative h-80 rounded-3xl overflow-hidden shadow-lg border border-white cursor-pointer" data-category="fleet" onclick="openLightbox('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=1600', 'Boeing 787-10 Dreamliner Wingtip', 'Aircraft Fleet • Wingtip')">
+                <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Dreamliner Wing">
+                <div class="absolute inset-0 bg-gradient-to-t from-jet via-jet/20 to-transparent opacity-75 group-hover:opacity-85 transition-opacity"></div>
+                <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] text-white font-bold uppercase tracking-wider">FLEET</div>
+                <div class="absolute bottom-0 p-5 text-white space-y-1">
+                    <span class="text-[10px] font-bold text-emerald-400 uppercase tracking-widest">Boeing 787-10</span>
+                    <h3 class="font-syne font-bold text-xl">DREAMLINER SKY TRACK</h3>
+                    <p class="text-[11px] text-gray-300">Electro-chromic dimmable windows</p>
+                </div>
+            </div>
+
+            <!-- Image Card 6 -->
+            <div class="gallery-card group relative h-80 rounded-3xl overflow-hidden shadow-lg border border-white cursor-pointer" data-category="fleet" onclick="openLightbox('https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?q=80&w=1600', 'Cruising at 40,000 Feet Above Clouds', 'Aircraft Fleet • High Altitude')">
+                <img src="https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Flight High Altitude">
+                <div class="absolute inset-0 bg-gradient-to-t from-jet via-jet/20 to-transparent opacity-75 group-hover:opacity-85 transition-opacity"></div>
+                <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] text-white font-bold uppercase tracking-wider">CRUISING</div>
+                <div class="absolute bottom-0 p-5 text-white space-y-1">
+                    <span class="text-[10px] font-bold text-amber-300 uppercase tracking-widest">Supersonic Altitude</span>
+                    <h3 class="font-syne font-bold text-xl">SUNSET CLOUD HORIZON</h3>
+                    <p class="text-[11px] text-gray-300">Cruising Mach 0.89 at 40,000 feet</p>
+                </div>
+            </div>
+
+            <!-- Image Card 7 (NEW Cockpit Avionics) -->
+            <div class="gallery-card group relative h-80 rounded-3xl overflow-hidden shadow-lg border border-white cursor-pointer" data-category="fleet" onclick="openLightbox('https://images.unsplash.com/photo-1519074069444-1ba4eff56be7?q=80&w=1600', 'Avionics Glass Deck & Dual HUD Guidance', 'Aircraft Fleet • Flight Deck')">
+                <img src="https://images.unsplash.com/photo-1519074069444-1ba4eff56be7?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Flight Deck Avionics">
+                <div class="absolute inset-0 bg-gradient-to-t from-jet via-jet/20 to-transparent opacity-75 group-hover:opacity-85 transition-opacity"></div>
+                <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] text-white font-bold uppercase tracking-wider">AVIONICS</div>
+                <div class="absolute bottom-0 p-5 text-white space-y-1">
+                    <span class="text-[10px] font-bold text-sky-300 uppercase tracking-widest">Glass Cockpit System</span>
+                    <h3 class="font-syne font-bold text-xl">DUAL HUD GUIDANCE DECK</h3>
+                    <p class="text-[11px] text-gray-300">Fly-by-wire synthetic vision telemetry</p>
+                </div>
+            </div>
+
+            <!-- Image Card 8 (NEW Night Runway Takeoff) -->
+            <div class="gallery-card group relative h-80 rounded-3xl overflow-hidden shadow-lg border border-white cursor-pointer" data-category="fleet" onclick="openLightbox('https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?q=80&w=1600', 'Night Takeoff Runway Acceleration', 'Aircraft Fleet • Thrust')">
+                <img src="https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Night Takeoff">
+                <div class="absolute inset-0 bg-gradient-to-t from-jet via-jet/20 to-transparent opacity-75 group-hover:opacity-85 transition-opacity"></div>
+                <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] text-white font-bold uppercase tracking-wider">TAKEOFF</div>
+                <div class="absolute bottom-0 p-5 text-white space-y-1">
+                    <span class="text-[10px] font-bold text-rose-400 uppercase tracking-widest">Full Engine Thrust</span>
+                    <h3 class="font-syne font-bold text-xl">NIGHT RUNWAY THRUST</h3>
+                    <p class="text-[11px] text-gray-300">97,000 lbs Rolls-Royce Trent acceleration</p>
+                </div>
+            </div>
+
+            <!-- Image Card 9 (NEW Ocean Approach) -->
+            <div class="gallery-card group relative h-80 rounded-3xl overflow-hidden shadow-lg border border-white cursor-pointer" data-category="fleet" onclick="openLightbox('https://images.unsplash.com/photo-1569154941061-e231b4725ef1?q=80&w=1600', 'Golden Hour Ocean Approach Flight', 'Aircraft Fleet • Golden Hour')">
+                <img src="https://images.unsplash.com/photo-1569154941061-e231b4725ef1?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Golden Hour Approach">
+                <div class="absolute inset-0 bg-gradient-to-t from-jet via-jet/20 to-transparent opacity-75 group-hover:opacity-85 transition-opacity"></div>
+                <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] text-white font-bold uppercase tracking-wider">APPROACH</div>
+                <div class="absolute bottom-0 p-5 text-white space-y-1">
+                    <span class="text-[10px] font-bold text-amber-300 uppercase tracking-widest">Pacific Coastal Vector</span>
+                    <h3 class="font-syne font-bold text-xl">GOLDEN OCEAN APPROACH</h3>
+                    <p class="text-[11px] text-gray-300">Precision ILS landing approach</p>
+                </div>
+            </div>
+
+            <!-- Image Card 10 (NEW Double Bed Residence) -->
+            <div class="gallery-card group relative h-80 rounded-3xl overflow-hidden shadow-lg border border-white cursor-pointer" data-category="cabin" onclick="openLightbox('https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=1600', 'Master Bedroom Residence Suite', 'Cabin Suite • Double Bed')">
+                <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Double Bed Residence">
+                <div class="absolute inset-0 bg-gradient-to-t from-jet via-jet/20 to-transparent opacity-75 group-hover:opacity-85 transition-opacity"></div>
+                <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] text-white font-bold uppercase tracking-wider">SUITE BEDROOM</div>
+                <div class="absolute bottom-0 p-5 text-white space-y-1">
+                    <span class="text-[10px] font-bold text-emerald-300 uppercase tracking-widest">Private Residence Pod</span>
+                    <h3 class="font-syne font-bold text-xl">MASTER BEDROOM SUITE</h3>
+                    <p class="text-[11px] text-gray-300">Enclosed double-bed suite with active noise dampening</p>
+                </div>
+            </div>
+
+            <!-- Image Card 11 (NEW Leather Ottoman Pod) -->
+            <div class="gallery-card group relative h-80 rounded-3xl overflow-hidden shadow-lg border border-white cursor-pointer" data-category="cabin" onclick="openLightbox('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1600', 'Hand-Stitched Italian Leather Suite Pod', 'Cabin Suite • Leather Luxury')">
+                <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Leather Suite Pod">
+                <div class="absolute inset-0 bg-gradient-to-t from-jet via-jet/20 to-transparent opacity-75 group-hover:opacity-85 transition-opacity"></div>
+                <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] text-white font-bold uppercase tracking-wider">LEATHER POD</div>
+                <div class="absolute bottom-0 p-5 text-white space-y-1">
+                    <span class="text-[10px] font-bold text-indigo-300 uppercase tracking-widest">Italian Poltrona Frau Leather</span>
+                    <h3 class="font-syne font-bold text-xl">EXECUTIVE OTTOMAN POD</h3>
+                    <p class="text-[11px] text-gray-300">Reclines 180° into lie-flat sleeper</p>
+                </div>
+            </div>
+
+            <!-- Image Card 12 (NEW Wagyu Platter) -->
+            <div class="gallery-card group relative h-80 rounded-3xl overflow-hidden shadow-lg border border-white cursor-pointer" data-category="dining" onclick="openLightbox('https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1600', 'A5 Wagyu Beef & Black Truffle Course', 'Gourmet Dining • Michelin Course')">
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Wagyu Platter">
+                <div class="absolute inset-0 bg-gradient-to-t from-jet via-jet/20 to-transparent opacity-75 group-hover:opacity-85 transition-opacity"></div>
+                <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] text-white font-bold uppercase tracking-wider">WAGYU COURSE</div>
+                <div class="absolute bottom-0 p-5 text-white space-y-1">
+                    <span class="text-[10px] font-bold text-amber-400 uppercase tracking-widest">3-Star Michelin Partnership</span>
+                    <h3 class="font-syne font-bold text-xl">A5 WAGYU & BLACK TRUFFLE</h3>
+                    <p class="text-[11px] text-gray-300">Searing perfection at 40,000 feet</p>
+                </div>
+            </div>
+
+            <!-- Image Card 13 (NEW Vintage Wine Tasting) -->
+            <div class="gallery-card group relative h-80 rounded-3xl overflow-hidden shadow-lg border border-white cursor-pointer" data-category="dining" onclick="openLightbox('https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?q=80&w=1600', 'Grand Cru Vintage Wine & Champagne Tasting', 'Gourmet Dining • Cellar')">
+                <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Vintage Wine Cellar">
+                <div class="absolute inset-0 bg-gradient-to-t from-jet via-jet/20 to-transparent opacity-75 group-hover:opacity-85 transition-opacity"></div>
+                <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] text-white font-bold uppercase tracking-wider">SOMMELIER</div>
+                <div class="absolute bottom-0 p-5 text-white space-y-1">
+                    <span class="text-[10px] font-bold text-purple-300 uppercase tracking-widest">Master Sommelier Pairing</span>
+                    <h3 class="font-syne font-bold text-xl">GRAND CRU CELLAR TASTING</h3>
+                    <p class="text-[11px] text-gray-300">Vintage Champagne & French Bordeaux selection</p>
+                </div>
+            </div>
+
+            <!-- Image Card 14 (NEW Altitude Cocktail Bar) -->
+            <div class="gallery-card group relative h-80 rounded-3xl overflow-hidden shadow-lg border border-white cursor-pointer" data-category="lounge" onclick="openLightbox('https://images.unsplash.com/photo-1572116469696-31de0f17cc34?q=80&w=1600', 'Panoramic Altitude Sky Deck Mixology Lounge', 'Sky Lounge • Mixology')">
+                <img src="https://images.unsplash.com/photo-1572116469696-31de0f17cc34?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Altitude Lounge Bar">
+                <div class="absolute inset-0 bg-gradient-to-t from-jet via-jet/20 to-transparent opacity-75 group-hover:opacity-85 transition-opacity"></div>
+                <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] text-white font-bold uppercase tracking-wider">ALTITUDE BAR</div>
+                <div class="absolute bottom-0 p-5 text-white space-y-1">
+                    <span class="text-[10px] font-bold text-sky-300 uppercase tracking-widest">Handcrafted Mixology</span>
+                    <h3 class="font-syne font-bold text-xl">CELESTIAL SKY LOUNGE BAR</h3>
+                    <p class="text-[11px] text-gray-300">Signature high-altitude botanical cocktails</p>
+                </div>
+            </div>
+
+            <!-- Image Card 15 (NEW Turbine Fan Blades) -->
+            <div class="gallery-card group relative h-80 rounded-3xl overflow-hidden shadow-lg border border-white cursor-pointer" data-category="fleet" onclick="openLightbox('https://images.unsplash.com/photo-1508873696983-2df515122519?q=80&w=1600', 'Rolls-Royce Trent XWB Turbine Fan Blades', 'Aircraft Fleet • Engine')">
+                <img src="https://images.unsplash.com/photo-1508873696983-2df515122519?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Turbine Fan Blades">
+                <div class="absolute inset-0 bg-gradient-to-t from-jet via-jet/20 to-transparent opacity-75 group-hover:opacity-85 transition-opacity"></div>
+                <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] text-white font-bold uppercase tracking-wider">ENGINE TECH</div>
+                <div class="absolute bottom-0 p-5 text-white space-y-1">
+                    <span class="text-[10px] font-bold text-emerald-300 uppercase tracking-widest">3D Titanium Fan Blades</span>
+                    <h3 class="font-syne font-bold text-xl">ROLLS-ROYCE TRENT XWB</h3>
+                    <p class="text-[11px] text-gray-300">97,000 lbs high-bypass turbofan engineering</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ================= LIGHTBOX MODAL ================= -->
+    <div id="lightbox-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-jet/90 backdrop-blur-md hidden transition-opacity">
+        <div class="relative max-w-4xl w-full glass-box rounded-3xl p-4 overflow-hidden border border-white/40 space-y-4">
+            <button onclick="closeLightbox()" class="absolute top-6 right-6 z-20 bg-white/20 hover:bg-white text-white hover:text-jet p-2.5 rounded-full transition-all">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <div class="relative h-96 md:h-[480px] rounded-2xl overflow-hidden bg-black/40">
+                <img id="lightbox-img" src="" class="w-full h-full object-cover" alt="Expanded Gallery Preview">
+            </div>
+
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 px-2 pb-2">
+                <div>
+                    <span id="lightbox-tag" class="text-[10px] font-bold text-amber-400 uppercase tracking-widest block"></span>
+                    <h3 id="lightbox-title" class="font-syne font-bold text-2xl text-jet"></h3>
+                    <p id="lightbox-desc" class="text-xs text-gray-500 max-w-lg mt-1"></p>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <a id="lightbox-download" href="" target="_blank" download class="bg-jet hover:bg-gray-800 text-white text-xs font-bold px-5 py-3 rounded-xl transition-all shadow-md flex items-center gap-2">
+                        <i data-lucide="download" class="w-4 h-4"></i>
+                        <span>DOWNLOAD 4K ASSET</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="relative z-20 border-t border-gray-300/50 bg-nude-50/80 backdrop-blur-md py-6 px-6 mt-12">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500 font-medium">
+            <span class="font-syne font-bold text-jet text-sm">RAUF AIRLINES FLEET GALLERY</span>
+            <span>© 2026 4K UHD Aviation Assets. All Rights Reserved.</span>
+        </div>
+    </footer>
+
+    <!-- External JavaScript Controllers -->
+    <script src="js/main.js"></script>
+    <script src="js/gallery.js"></script>
+</body>
+</html>

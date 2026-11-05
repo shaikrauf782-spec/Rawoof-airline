@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rauf Airlines — Flight Operations & Admin Console</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Syne & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- External Custom Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- External Tailwind Configuration -->
+    <script src="js/tailwind-config.js"></script>
+</head>
+<body class="bg-nude-100 text-jet font-sans antialiased selection:bg-jet selection:text-white min-h-screen flex flex-col justify-between">
+
+    <!-- ================= BACKGROUND CAROUSEL ================= -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-nude-100/90 via-nude-100/60 to-nude-100 z-10"></div>
+        <img src="https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?q=80&w=2069&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover scale-105 opacity-80" alt="Cloud Sky">
+    </div>
+
+    <!-- ================= NAVIGATION HEADER ================= -->
+    <header class="relative z-50 px-6 py-4">
+        <nav class="max-w-7xl mx-auto glass-box rounded-2xl px-6 py-3 flex items-center justify-between shadow-sm">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 bg-jet text-white rounded-xl flex items-center justify-center transition-transform group-hover:rotate-12 duration-300 shadow-sm">
+                    <!-- R Letter Flight Silhouette Custom Logo -->
+                    <svg viewBox="0 0 64 64" class="w-6 h-6 fill-none stroke-current" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M 16 12 V 52" stroke-width="5.5"/>
+                        <path d="M 16 14 C 36 10, 48 18, 48 29 C 48 40, 36 42, 16 42" stroke-width="5"/>
+                        <path d="M 30 40 L 48 52" stroke-width="5.5"/>
+                        <path d="M 24 8 L 52 20 L 42 26 Z" fill="currentColor" stroke-width="none"/>
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <div class="flex items-center gap-2">
+                        <span class="font-syne font-extrabold text-xl tracking-tight text-jet">RAUF</span>
+                        <span class="bg-jet text-white text-[9px] font-bold px-2 py-0.5 rounded-md uppercase">ADMIN</span>
+                    </div>
+                    <span class="text-[9px] tracking-[0.3em] font-semibold text-gray-500 uppercase -mt-1">Control Operations</span>
+                </div>
+            </a>
+
+            <div class="hidden md:flex items-center gap-2 bg-white/40 p-1.5 rounded-xl border border-white/60 text-xs font-semibold">
+                <a href="index.html" class="px-4 py-2 rounded-lg text-gray-600 hover:text-jet hover:bg-white/60 transition-all">MAIN SITE</a>
+                <a href="search.html" class="px-4 py-2 rounded-lg text-gray-600 hover:text-jet hover:bg-white/60 transition-all">FLIGHT SEARCH</a>
+                <a href="index.html#status" class="px-4 py-2 rounded-lg text-gray-600 hover:text-jet hover:bg-white/60 transition-all">LIVE SCHEDULE</a>
+                <a href="image.html" class="px-4 py-2 rounded-lg text-gray-600 hover:text-jet hover:bg-white/60 transition-all">FLEET GALLERY</a>
+                <a href="admin.html" class="px-4 py-2 rounded-lg bg-jet text-white shadow-sm">ADMIN DASHBOARD</a>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <div class="text-right hidden sm:block">
+                    <span class="block text-xs font-bold text-jet">Capt. A. Rauf</span>
+                    <span class="block text-[10px] text-emerald-600 font-bold">Chief Flight Controller</span>
+                </div>
+                <a href="login.html" class="glass-box p-2.5 rounded-xl hover:bg-white text-gray-700 transition-all" title="Logout">
+                    <i data-lucide="log-out" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ================= MAIN ADMIN DASHBOARD ================= -->
+    <main class="relative z-20 flex-grow max-w-7xl w-full mx-auto px-6 py-6 space-y-8">
+        
+        <!-- Header Banner -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+                <div class="flex items-center gap-2 mb-1">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span class="text-xs font-bold uppercase text-emerald-700 tracking-wider">Live System Sync Active</span>
+                </div>
+                <h1 class="font-syne font-extrabold text-3xl md:text-4xl text-jet uppercase">FLIGHT OPERATIONS MANAGEMENT</h1>
+                <p class="text-xs text-gray-500 font-medium">Real-time scheduling, gate allocations, status updating, and fleet management</p>
+            </div>
+            
+            <div class="flex gap-3">
+                <button onclick="openAddFlightModal()" class="bg-jet hover:bg-gray-800 text-white font-bold text-xs px-5 py-3 rounded-xl transition-all shadow-md flex items-center gap-2">
+                    <i data-lucide="plus-circle" class="w-4 h-4"></i>
+                    <span>ADD NEW FLIGHT</span>
+                </button>
+                <button onclick="refreshData()" class="glass-box text-jet font-bold text-xs px-4 py-3 rounded-xl hover:bg-white transition-all flex items-center gap-2">
+                    <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+                    <span>SYNC</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Metric KPI Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="glass-box p-5 rounded-3xl space-y-2 border-l-4 border-l-jet">
+                <div class="flex justify-between items-center text-gray-400">
+                    <span class="text-[10px] font-bold uppercase tracking-wider">Active Flights Today</span>
+                    <i data-lucide="plane-takeoff" class="w-5 h-5 text-jet"></i>
+                </div>
+                <div class="flex items-baseline gap-2">
+                    <span id="stat-active-count" class="font-syne font-extrabold text-3xl text-jet">14</span>
+                    <span class="text-xs font-bold text-emerald-600">+2 Scheduled</span>
+                </div>
+            </div>
+
+            <div class="glass-box p-5 rounded-3xl space-y-2 border-l-4 border-l-emerald-500">
+                <div class="flex justify-between items-center text-gray-400">
+                    <span class="text-[10px] font-bold uppercase tracking-wider">On-Time Reliability</span>
+                    <i data-lucide="clock" class="w-5 h-5 text-emerald-600"></i>
+                </div>
+                <div class="flex items-baseline gap-2">
+                    <span class="font-syne font-extrabold text-3xl text-jet">98.4%</span>
+                    <span class="text-xs font-bold text-emerald-600">Industry Leader</span>
+                </div>
+            </div>
+
+            <div class="glass-box p-5 rounded-3xl space-y-2 border-l-4 border-l-amber-500">
+                <div class="flex justify-between items-center text-gray-400">
+                    <span class="text-[10px] font-bold uppercase tracking-wider">VIP Booked Passengers</span>
+                    <i data-lucide="users" class="w-5 h-5 text-amber-600"></i>
+                </div>
+                <div class="flex items-baseline gap-2">
+                    <span class="font-syne font-extrabold text-3xl text-jet">1,420</span>
+                    <span class="text-xs font-bold text-amber-600">92% Occupancy</span>
+                </div>
+            </div>
+
+            <div class="glass-box p-5 rounded-3xl space-y-2 border-l-4 border-l-indigo-500">
+                <div class="flex justify-between items-center text-gray-400">
+                    <span class="text-[10px] font-bold uppercase tracking-wider">Today's Revenue</span>
+                    <i data-lucide="dollar-sign" class="w-5 h-5 text-indigo-600"></i>
+                </div>
+                <div class="flex items-baseline gap-2">
+                    <span class="font-syne font-extrabold text-3xl text-jet">$148.5K</span>
+                    <span class="text-xs font-bold text-indigo-600">+14% vs avg</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Operations Table -->
+        <div class="glass-box rounded-3xl p-6 space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-gray-200">
+                <div>
+                    <h2 class="font-syne font-bold text-xl text-jet">FLIGHT CONTROL MONITOR</h2>
+                    <p class="text-xs text-gray-500">Click status tags to instantly cycle status (On Time → Boarding → Delayed → Departed)</p>
+                </div>
+                
+                <div class="flex gap-2">
+                    <input type="text" id="search-input" onkeyup="filterFlightsTable()" placeholder="Search Flight No / City..." class="bg-white/80 border border-gray-200 text-xs px-3.5 py-2 rounded-xl outline-none focus:border-jet">
+                    <select id="status-filter" onchange="filterFlightsTable()" class="bg-white/80 border border-gray-200 text-xs font-bold px-3 py-2 rounded-xl outline-none focus:border-jet">
+                        <option value="ALL">All Statuses</option>
+                        <option value="On Time">On Time</option>
+                        <option value="Boarding">Boarding</option>
+                        <option value="Delayed">Delayed</option>
+                        <option value="Departed">Departed</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Table -->
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse" id="admin-flights-table">
+                    <thead>
+                        <tr class="text-[10px] font-bold text-gray-400 uppercase tracking-wider border-b border-gray-200 pb-3">
+                            <th class="py-3">Flight No.</th>
+                            <th class="py-3">Route</th>
+                            <th class="py-3">Departure Time</th>
+                            <th class="py-3">Aircraft</th>
+                            <th class="py-3">Gate</th>
+                            <th class="py-3">Pass. Count</th>
+                            <th class="py-3">Status (Click to toggle)</th>
+                            <th class="py-3 text-right">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200/60 text-xs font-semibold" id="table-body">
+                        <!-- Row 1 -->
+                        <tr class="hover:bg-white/50 transition-colors" id="row-RF802">
+                            <td class="py-4 font-bold text-jet flex items-center gap-2">
+                                <span class="bg-jet text-white text-[10px] px-2 py-0.5 rounded">RF-802</span>
+                            </td>
+                            <td class="py-4 font-bold">New York (JFK) → Tokyo (HND)</td>
+                            <td class="py-4 text-gray-600">08:30 AM</td>
+                            <td class="py-4 text-gray-600">Airbus A350-1000</td>
+                            <td class="py-4"><span class="bg-white px-2.5 py-1 rounded-md border font-mono font-bold">B12</span></td>
+                            <td class="py-4 text-gray-600">284 / 300</td>
+                            <td class="py-4">
+                                <button onclick="toggleFlightStatus('RF-802')" id="status-RF-802" class="bg-emerald-100 text-emerald-800 hover:bg-emerald-200 text-xs px-3 py-1 rounded-full font-bold transition-all flex items-center gap-1.5">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> On Time
+                                </button>
+                            </td>
+                            <td class="py-4 text-right">
+                                <button onclick="deleteFlight('row-RF802')" class="text-rose-600 hover:bg-rose-50 p-2 rounded-lg transition-colors" title="Cancel Flight">
+                                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Row 2 -->
+                        <tr class="hover:bg-white/50 transition-colors" id="row-RF310">
+                            <td class="py-4 font-bold text-jet flex items-center gap-2">
+                                <span class="bg-jet text-white text-[10px] px-2 py-0.5 rounded">RF-310</span>
+                            </td>
+                            <td class="py-4 font-bold">New York (JFK) → Paris (CDG)</td>
+                            <td class="py-4 text-gray-600">09:15 AM</td>
+                            <td class="py-4 text-gray-600">Boeing 787-10 Dreamliner</td>
+                            <td class="py-4"><span class="bg-white px-2.5 py-1 rounded-md border font-mono font-bold">A04</span></td>
+                            <td class="py-4 text-gray-600">210 / 220</td>
+                            <td class="py-4">
+                                <button onclick="toggleFlightStatus('RF-310')" id="status-RF-310" class="bg-blue-100 text-blue-800 hover:bg-blue-200 text-xs px-3 py-1 rounded-full font-bold transition-all flex items-center gap-1.5">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-ping"></span> Boarding
+                                </button>
+                            </td>
+                            <td class="py-4 text-right">
+                                <button onclick="deleteFlight('row-RF310')" class="text-rose-600 hover:bg-rose-50 p-2 rounded-lg transition-colors" title="Cancel Flight">
+                                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Row 3 -->
+                        <tr class="hover:bg-white/50 transition-colors" id="row-RF901">
+                            <td class="py-4 font-bold text-jet flex items-center gap-2">
+                                <span class="bg-jet text-white text-[10px] px-2 py-0.5 rounded">RF-901</span>
+                            </td>
+                            <td class="py-4 font-bold">New York (JFK) → Dubai (DXB)</td>
+                            <td class="py-4 text-gray-600">11:00 AM</td>
+                            <td class="py-4 text-gray-600">Airbus A350-1000</td>
+                            <td class="py-4"><span class="bg-white px-2.5 py-1 rounded-md border font-mono font-bold">C18</span></td>
+                            <td class="py-4 text-gray-600">290 / 300</td>
+                            <td class="py-4">
+                                <button onclick="toggleFlightStatus('RF-901')" id="status-RF-901" class="bg-amber-100 text-amber-800 hover:bg-amber-200 text-xs px-3 py-1 rounded-full font-bold transition-all flex items-center gap-1.5">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span> Delayed (+15m)
+                                </button>
+                            </td>
+                            <td class="py-4 text-right">
+                                <button onclick="deleteFlight('row-RF901')" class="text-rose-600 hover:bg-rose-50 p-2 rounded-lg transition-colors" title="Cancel Flight">
+                                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Row 4 -->
+                        <tr class="hover:bg-white/50 transition-colors" id="row-RF114">
+                            <td class="py-4 font-bold text-jet flex items-center gap-2">
+                                <span class="bg-jet text-white text-[10px] px-2 py-0.5 rounded">RF-114</span>
+                            </td>
+                            <td class="py-4 font-bold">New York (JFK) → London (LHR, UK)</td>
+                            <td class="py-4 text-gray-600">01:45 PM</td>
+                            <td class="py-4 text-gray-600">Boeing 787-10 Dreamliner</td>
+                            <td class="py-4"><span class="bg-white px-2.5 py-1 rounded-md border font-mono font-bold">B02</span></td>
+                            <td class="py-4 text-gray-600">195 / 220</td>
+                            <td class="py-4">
+                                <button onclick="toggleFlightStatus('RF-114')" id="status-RF-114" class="bg-emerald-100 text-emerald-800 hover:bg-emerald-200 text-xs px-3 py-1 rounded-full font-bold transition-all flex items-center gap-1.5">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> On Time
+                                </button>
+                            </td>
+                            <td class="py-4 text-right">
+                                <button onclick="deleteFlight('row-RF114')" class="text-rose-600 hover:bg-rose-50 p-2 rounded-lg transition-colors" title="Cancel Flight">
+                                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Row 5 -->
+                        <tr class="hover:bg-white/50 transition-colors" id="row-RF550">
+                            <td class="py-4 font-bold text-jet flex items-center gap-2">
+                                <span class="bg-jet text-white text-[10px] px-2 py-0.5 rounded">RF-550</span>
+                            </td>
+                            <td class="py-4 font-bold">New York (JFK) → Singapore (SIN)</td>
+                            <td class="py-4 text-gray-600">06:30 PM</td>
+                            <td class="py-4 text-gray-600">Airbus A350-900 ULR</td>
+                            <td class="py-4"><span class="bg-white px-2.5 py-1 rounded-md border font-mono font-bold">D08</span></td>
+                            <td class="py-4 text-gray-600">297 / 300</td>
+                            <td class="py-4">
+                                <button onclick="toggleFlightStatus('RF-550')" id="status-RF-550" class="bg-emerald-100 text-emerald-800 hover:bg-emerald-200 text-xs px-3 py-1 rounded-full font-bold transition-all flex items-center gap-1.5">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> On Time
+                                </button>
+                            </td>
+                            <td class="py-4 text-right">
+                                <button onclick="deleteFlight('row-RF550')" class="text-rose-600 hover:bg-rose-50 p-2 rounded-lg transition-colors" title="Cancel Flight">
+                                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Row 6 -->
+                        <tr class="hover:bg-white/50 transition-colors" id="row-RF720">
+                            <td class="py-4 font-bold text-jet flex items-center gap-2">
+                                <span class="bg-jet text-white text-[10px] px-2 py-0.5 rounded">RF-720</span>
+                            </td>
+                            <td class="py-4 font-bold">New York (JFK) → Rome (FCO, Italy)</td>
+                            <td class="py-4 text-gray-600">08:15 PM</td>
+                            <td class="py-4 text-gray-600">Boeing 787-10 Dreamliner</td>
+                            <td class="py-4"><span class="bg-white px-2.5 py-1 rounded-md border font-mono font-bold">C06</span></td>
+                            <td class="py-4 text-gray-600">214 / 220</td>
+                            <td class="py-4">
+                                <button onclick="toggleFlightStatus('RF-720')" id="status-RF-720" class="bg-emerald-100 text-emerald-800 hover:bg-emerald-200 text-xs px-3 py-1 rounded-full font-bold transition-all flex items-center gap-1.5">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> On Time
+                                </button>
+                            </td>
+                            <td class="py-4 text-right">
+                                <button onclick="deleteFlight('row-RF720')" class="text-rose-600 hover:bg-rose-50 p-2 rounded-lg transition-colors" title="Cancel Flight">
+                                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Row 7 -->
+                        <tr class="hover:bg-white/50 transition-colors" id="row-RF440">
+                            <td class="py-4 font-bold text-jet flex items-center gap-2">
+                                <span class="bg-jet text-white text-[10px] px-2 py-0.5 rounded">RF-440</span>
+                            </td>
+                            <td class="py-4 font-bold">New York (JFK) → Sydney (SYD, Australia)</td>
+                            <td class="py-4 text-gray-600">10:45 PM</td>
+                            <td class="py-4 text-gray-600">Airbus A350-1000</td>
+                            <td class="py-4"><span class="bg-white px-2.5 py-1 rounded-md border font-mono font-bold">A12</span></td>
+                            <td class="py-4 text-gray-600">280 / 300</td>
+                            <td class="py-4">
+                                <button onclick="toggleFlightStatus('RF-440')" id="status-RF-440" class="bg-purple-100 text-purple-800 hover:bg-purple-200 text-xs px-3 py-1 rounded-full font-bold transition-all flex items-center gap-1.5">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span> Departed
+                                </button>
+                            </td>
+                            <td class="py-4 text-right">
+                                <button onclick="deleteFlight('row-RF440')" class="text-rose-600 hover:bg-rose-50 p-2 rounded-lg transition-colors" title="Cancel Flight">
+                                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Row 8 (NEW Frankfurt) -->
+                        <tr class="hover:bg-white/50 transition-colors" id="row-RF905">
+                            <td class="py-4 font-bold text-jet flex items-center gap-2">
+                                <span class="bg-amber-800 text-white text-[10px] px-2 py-0.5 rounded">RF-905</span>
+                            </td>
+                            <td class="py-4 font-bold">New York (JFK) → Frankfurt (FRA, Germany)</td>
+                            <td class="py-4 text-gray-600">05:40 PM</td>
+                            <td class="py-4 text-gray-600">Boeing 787-10</td>
+                            <td class="py-4"><span class="bg-white px-2.5 py-1 rounded-md border font-mono font-bold">B18</span></td>
+                            <td class="py-4 text-gray-600">218 / 220</td>
+                            <td class="py-4">
+                                <button onclick="toggleFlightStatus('RF-905')" id="status-RF-905" class="bg-emerald-100 text-emerald-800 hover:bg-emerald-200 text-xs px-3 py-1 rounded-full font-bold transition-all flex items-center gap-1.5">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> On Time
+                                </button>
+                            </td>
+                            <td class="py-4 text-right">
+                                <button onclick="deleteFlight('row-RF905')" class="text-rose-600 hover:bg-rose-50 p-2 rounded-lg transition-colors" title="Cancel Flight">
+                                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Row 9 (NEW Seoul) -->
+                        <tr class="hover:bg-white/50 transition-colors" id="row-RF618">
+                            <td class="py-4 font-bold text-jet flex items-center gap-2">
+                                <span class="bg-purple-900 text-white text-[10px] px-2 py-0.5 rounded">RF-618</span>
+                            </td>
+                            <td class="py-4 font-bold">New York (JFK) → Seoul (ICN, S. Korea)</td>
+                            <td class="py-4 text-gray-600">01:10 PM</td>
+                            <td class="py-4 text-gray-600">Airbus A350-1000</td>
+                            <td class="py-4"><span class="bg-white px-2.5 py-1 rounded-md border font-mono font-bold">C20</span></td>
+                            <td class="py-4 text-gray-600">295 / 300</td>
+                            <td class="py-4">
+                                <button onclick="toggleFlightStatus('RF-618')" id="status-RF-618" class="bg-emerald-100 text-emerald-800 hover:bg-emerald-200 text-xs px-3 py-1 rounded-full font-bold transition-all flex items-center gap-1.5">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> On Time
+                                </button>
+                            </td>
+                            <td class="py-4 text-right">
+                                <button onclick="deleteFlight('row-RF618')" class="text-rose-600 hover:bg-rose-50 p-2 rounded-lg transition-colors" title="Cancel Flight">
+                                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Row 10 (NEW National LAX) -->
+                        <tr class="hover:bg-white/50 transition-colors" id="row-RF101">
+                            <td class="py-4 font-bold text-jet flex items-center gap-2">
+                                <span class="bg-jet text-white text-[10px] px-2 py-0.5 rounded">RF-101</span>
+                            </td>
+                            <td class="py-4 font-bold">New York (JFK) → Los Angeles (LAX) 🇺🇸</td>
+                            <td class="py-4 text-gray-600">07:15 AM</td>
+                            <td class="py-4 text-gray-600">Airbus A350-1000</td>
+                            <td class="py-4"><span class="bg-white px-2.5 py-1 rounded-md border font-mono font-bold">C08</span></td>
+                            <td class="py-4 text-gray-600">297 / 300</td>
+                            <td class="py-4">
+                                <button onclick="toggleFlightStatus('RF-101')" id="status-RF-101" class="bg-purple-100 text-purple-800 hover:bg-purple-200 text-xs px-3 py-1 rounded-full font-bold transition-all flex items-center gap-1.5">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span> Departed
+                                </button>
+                            </td>
+                            <td class="py-4 text-right">
+                                <button onclick="deleteFlight('row-RF101')" class="text-rose-600 hover:bg-rose-50 p-2 rounded-lg transition-colors" title="Cancel Flight">
+                                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Secondary Section: Recent VIP Passenger Requests -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="glass-box p-6 rounded-3xl space-y-4">
+                <div class="flex items-center justify-between pb-3 border-b border-gray-200">
+                    <h3 class="font-syne font-bold text-lg text-jet">VIP SPECIAL CONCIERGE REQUESTS</h3>
+                    <span class="text-[10px] font-bold bg-jet text-white px-2.5 py-1 rounded-md">3 Pending</span>
+                </div>
+
+                <div class="space-y-3 text-xs">
+                    <div class="bg-white/80 p-3.5 rounded-2xl border flex items-center justify-between">
+                        <div>
+                            <span class="font-bold text-jet block">Dr. Alexander Rauf (RF-802)</span>
+                            <span class="text-gray-500 text-[11px]">Requested Private Chauffeur at HND + Champagne Service</span>
+                        </div>
+                        <button onclick="this.innerText='APPROVED'; this.className='bg-emerald-600 text-white font-bold text-[10px] px-3 py-1.5 rounded-lg'" class="bg-jet text-white font-bold text-[10px] px-3 py-1.5 rounded-lg hover:bg-gray-800">Approve</button>
+                    </div>
+
+                    <div class="bg-white/80 p-3.5 rounded-2xl border flex items-center justify-between">
+                        <div>
+                            <span class="font-bold text-jet block">Lady Elena Vance (RF-310)</span>
+                            <span class="text-gray-500 text-[11px]">Seat upgrade request to First Class Suite 02B</span>
+                        </div>
+                        <button onclick="this.innerText='APPROVED'; this.className='bg-emerald-600 text-white font-bold text-[10px] px-3 py-1.5 rounded-lg'" class="bg-jet text-white font-bold text-[10px] px-3 py-1.5 rounded-lg hover:bg-gray-800">Approve</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Operational Radar Health -->
+            <div class="glass-dark text-white p-6 rounded-3xl space-y-4 flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-[10px] font-bold text-emerald-400 uppercase tracking-widest">Airfield Telemetry</span>
+                        <span class="text-xs bg-emerald-500/20 text-emerald-300 font-mono px-2.5 py-1 rounded-md border border-emerald-500/30">System Normal</span>
+                    </div>
+                    <h3 class="font-syne font-bold text-xl">WEATHER & AIR TRAFFIC RADAR</h3>
+                    <p class="text-xs text-gray-400 mt-1">Transatlantic air corridor operating smoothly. Zero turbulence warnings reported.</p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 text-xs pt-2">
+                    <div class="bg-white/10 p-3 rounded-xl border border-white/10">
+                        <span class="text-gray-400 text-[10px] block">JFK Runway Status</span>
+                        <span class="font-bold text-white">4/4 Open</span>
+                    </div>
+                    <div class="bg-white/10 p-3 rounded-xl border border-white/10">
+                        <span class="text-gray-400 text-[10px] block">Average Delay</span>
+                        <span class="font-bold text-emerald-400">1.2 Minutes</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ================= ADD FLIGHT MODAL ================= -->
+    <div id="add-flight-modal" class="fixed inset-0 z-50 bg-jet/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-nude-100 max-w-lg w-full rounded-3xl p-8 border border-white shadow-2xl space-y-6">
+            <div class="flex justify-between items-center border-b pb-4">
+                <h3 class="font-syne font-extrabold text-2xl text-jet">SCHEDULE NEW FLIGHT</h3>
+                <button onclick="closeAddFlightModal()" class="text-gray-400 hover:text-jet"><i data-lucide="x" class="w-6 h-6"></i></button>
+            </div>
+
+            <form onsubmit="handleAddFlight(event)" class="space-y-4 text-xs font-semibold">
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-gray-500 uppercase text-[10px] mb-1">Flight Number</label>
+                        <input type="text" id="new-flight-no" required placeholder="RF-550" class="w-full p-3 bg-white border border-gray-200 rounded-xl outline-none focus:border-jet">
+                    </div>
+                    <div>
+                        <label class="block text-gray-500 uppercase text-[10px] mb-1">Aircraft Model</label>
+                        <select id="new-aircraft" class="w-full p-3 bg-white border border-gray-200 rounded-xl outline-none focus:border-jet">
+                            <option>Airbus A350-1000</option>
+                            <option>Boeing 787-10 Dreamliner</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-gray-500 uppercase text-[10px] mb-1">Route (From → To)</label>
+                    <input type="text" id="new-route" required placeholder="New York (JFK) → Singapore (SIN)" class="w-full p-3 bg-white border border-gray-200 rounded-xl outline-none focus:border-jet">
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-gray-500 uppercase text-[10px] mb-1">Departure Time</label>
+                        <input type="text" id="new-time" required placeholder="06:30 PM" class="w-full p-3 bg-white border border-gray-200 rounded-xl outline-none focus:border-jet">
+                    </div>
+                    <div>
+                        <label class="block text-gray-500 uppercase text-[10px] mb-1">Gate Designation</label>
+                        <input type="text" id="new-gate" required placeholder="D08" class="w-full p-3 bg-white border border-gray-200 rounded-xl outline-none focus:border-jet">
+                    </div>
+                </div>
+
+                <div class="pt-4 flex justify-end gap-3">
+                    <button type="button" onclick="closeAddFlightModal()" class="px-5 py-3 rounded-xl border bg-white text-gray-600 font-bold hover:bg-gray-50">Cancel</button>
+                    <button type="submit" class="px-6 py-3 rounded-xl bg-jet text-white font-bold hover:bg-gray-800 shadow-md">Publish Flight</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="relative z-20 border-t border-gray-300/50 bg-nude-50/80 backdrop-blur-md py-4 px-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center text-xs text-gray-500 font-medium">
+            <span class="font-syne font-bold text-jet">RAUF AIRLINES FLIGHT CONTROL SYSTEM</span>
+            <span>v4.2 Internal Operations</span>
+        </div>
+    </footer>
+
+    <!-- External JavaScript Controllers -->
+    <script src="js/main.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

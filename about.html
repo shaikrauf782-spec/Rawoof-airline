@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rauf Airlines — About Our Heritage & Vision</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Syne & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- External Custom Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- External Tailwind Configuration -->
+    <script src="js/tailwind-config.js"></script>
+</head>
+<body class="bg-nude-100 text-jet font-sans antialiased selection:bg-jet selection:text-white min-h-screen flex flex-col justify-between overflow-x-hidden">
+
+    <!-- ================= BACKGROUND CAROUSEL ================= -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-nude-100/85 via-nude-100/50 to-nude-100 z-10"></div>
+        <img id="carousel-bg-1" src="https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?q=80&w=2069&auto=format&fit=crop" class="bg-carousel-img absolute inset-0 w-full h-full object-cover scale-105 opacity-100" alt="Sky Above Clouds">
+        <img id="carousel-bg-2" src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?q=80&w=2070&auto=format&fit=crop" class="bg-carousel-img absolute inset-0 w-full h-full object-cover scale-100 opacity-0" alt="Airbus Flagship">
+    </div>
+
+    <!-- ================= NAVIGATION HEADER ================= -->
+    <header class="sticky top-0 z-50 px-6 py-4 transition-all duration-300">
+        <nav class="max-w-7xl mx-auto glass-box rounded-2xl px-6 py-3 flex items-center justify-between shadow-sm">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 bg-jet text-white rounded-xl flex items-center justify-center transition-transform group-hover:rotate-12 duration-300 shadow-sm">
+                    <!-- R Letter Flight Silhouette Custom Logo -->
+                    <svg viewBox="0 0 64 64" class="w-6 h-6 fill-none stroke-current" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M 16 12 V 52" stroke-width="5.5"/>
+                        <path d="M 16 14 C 36 10, 48 18, 48 29 C 48 40, 36 42, 16 42" stroke-width="5"/>
+                        <path d="M 30 40 L 48 52" stroke-width="5.5"/>
+                        <path d="M 24 8 L 52 20 L 42 26 Z" fill="currentColor" stroke-width="none"/>
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-syne font-extrabold text-xl tracking-tight text-jet">RAUF</span>
+                    <span class="text-[9px] tracking-[0.3em] font-semibold text-gray-500 uppercase -mt-1">Airlines</span>
+                </div>
+            </a>
+
+            <!-- Modular Navigation Links -->
+            <div class="hidden md:flex items-center gap-1 bg-white/40 p-1.5 rounded-xl border border-white/60">
+                <a href="index.html" class="px-4 py-2 rounded-lg text-xs font-semibold tracking-wide text-gray-600 hover:text-jet hover:bg-white/60 transition-all">HOME</a>
+                <a href="about.html" class="px-4 py-2 rounded-lg text-xs font-semibold tracking-wide bg-jet text-white shadow-sm flex items-center gap-1">
+                    <i data-lucide="info" class="w-3.5 h-3.5"></i>
+                    <span>ABOUT US</span>
+                </a>
+                <a href="image.html" class="px-4 py-2 rounded-lg text-xs font-semibold tracking-wide text-gray-600 hover:text-jet hover:bg-white/60 transition-all flex items-center gap-1">
+                    <i data-lucide="image" class="w-3.5 h-3.5"></i>
+                    <span>FLEET GALLERY</span>
+                </a>
+                <a href="admin.html" class="px-4 py-2 rounded-lg text-xs font-semibold tracking-wide text-gray-600 hover:text-jet hover:bg-white/60 transition-all flex items-center gap-1">
+                    <i data-lucide="shield" class="w-3.5 h-3.5"></i>
+                    <span>ADMIN CONTROL</span>
+                </a>
+                <a href="login.html" class="px-4 py-2 rounded-lg text-xs font-semibold tracking-wide text-gray-600 hover:text-jet hover:bg-white/60 transition-all flex items-center gap-1">
+                    <i data-lucide="user" class="w-3.5 h-3.5"></i>
+                    <span>LOGIN</span>
+                </a>
+            </div>
+
+            <a href="index.html" class="bg-jet hover:bg-gray-800 text-white text-xs font-bold px-5 py-3 rounded-xl transition-all shadow-md flex items-center gap-2">
+                <span>BOOK FLIGHT</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+        </nav>
+    </header>
+
+    <!-- ================= MAIN ABOUT SECTION ================= -->
+    <main class="relative z-20 flex-grow max-w-7xl w-full mx-auto px-6 py-6 space-y-12">
+
+        <!-- Hero Intro Banner -->
+        <div class="text-center pt-6 pb-2 space-y-3">
+            <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 border border-white text-jet text-xs font-bold uppercase tracking-wider shadow-xs">
+                <i data-lucide="award" class="w-3.5 h-3.5 text-amber-500"></i> Voted World's Best First-Class Airline 2026
+            </span>
+            <h1 class="font-syne font-extrabold text-4xl md:text-6xl lg:text-7xl text-jet uppercase leading-none">
+                REDEFINING LUXURY <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-jet via-gray-600 to-jet">IN COMMERCIAL AVIATION</span>
+            </h1>
+            <p class="text-xs md:text-sm text-gray-600 font-medium max-w-2xl mx-auto leading-relaxed">
+                Founded with a mission to eliminate compromised travel, Rauf Airlines merges aerospace engineering precision with bespoke 5-star hospitality across 6 continents.
+            </p>
+        </div>
+
+        <!-- Metric Numbers Highlight -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="glass-box p-6 rounded-3xl text-center space-y-1 border-b-4 border-b-jet">
+                <span class="font-syne font-extrabold text-4xl text-jet block">100%</span>
+                <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Safety & Compliance</span>
+            </div>
+            <div class="glass-box p-6 rounded-3xl text-center space-y-1 border-b-4 border-b-emerald-600">
+                <span class="font-syne font-extrabold text-4xl text-emerald-700 block">14</span>
+                <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Flagship Airliners</span>
+            </div>
+            <div class="glass-box p-6 rounded-3xl text-center space-y-1 border-b-4 border-b-amber-500">
+                <span class="font-syne font-extrabold text-4xl text-amber-700 block">42</span>
+                <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Global Destinations</span>
+            </div>
+            <div class="glass-box p-6 rounded-3xl text-center space-y-1 border-b-4 border-b-purple-600">
+                <span class="font-syne font-extrabold text-4xl text-purple-800 block">1.2M</span>
+                <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">VIP Passages Flown</span>
+            </div>
+        </div>
+
+        <!-- Our Story & Philosophy Showcase Grid -->
+        <div class="glass-box rounded-3xl p-8 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div class="space-y-6">
+                <span class="text-xs font-bold tracking-widest text-gray-400 uppercase">THE RAUF PHILOSOPHY</span>
+                <h2 class="font-syne font-extrabold text-3xl md:text-4xl text-jet">ENGINEERED FOR SERENITY AT 40,000 FEET</h2>
+                <p class="text-xs text-gray-600 leading-relaxed font-medium">
+                    Every aircraft in the Rauf fleet is built around cabin acoustic dampening, ambient pressure optimization, and zero-gravity seating comfort. We believe long-haul travel should arrive as a point of rejuvenation, not exhaustion.
+                </p>
+
+                <div class="space-y-3 text-xs pt-2">
+                    <div class="flex items-start gap-3 bg-white/80 p-3.5 rounded-2xl border border-gray-200/60">
+                        <div class="p-2 bg-jet text-white rounded-xl font-bold"><i data-lucide="shield-check" class="w-4 h-4"></i></div>
+                        <div>
+                            <span class="font-bold text-jet block">Zero-Compromise Flight Operations</span>
+                            <span class="text-gray-500 text-[11px]">Strict dual-captain flight crew standards with real-time airfield radar monitoring.</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-3 bg-white/80 p-3.5 rounded-2xl border border-gray-200/60">
+                        <div class="p-2 bg-jet text-white rounded-xl font-bold"><i data-lucide="leaf" class="w-4 h-4"></i></div>
+                        <div>
+                            <span class="font-bold text-jet block">20% Carbon Footprint Reduction</span>
+                            <span class="text-gray-500 text-[11px]">Next-gen carbon composite wings and Sustainable Aviation Fuel (SAF) blending.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative h-96 rounded-3xl overflow-hidden shadow-2xl border border-white">
+                <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover" alt="Rauf Luxury First Class Suite">
+                <div class="absolute inset-0 bg-gradient-to-t from-jet via-transparent to-transparent opacity-80"></div>
+                <div class="absolute bottom-6 left-6 right-6 text-white space-y-1">
+                    <span class="text-[10px] font-bold text-amber-400 uppercase tracking-widest">Flagship Interior</span>
+                    <h3 class="font-syne font-bold text-2xl">Enclosed First-Class Residence</h3>
+                    <p class="text-xs text-gray-300">Sliding doors, memory foam mattress, and private Sommelier bar service.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Leadership & Founders Section -->
+        <div class="space-y-6">
+            <div class="text-center max-w-xl mx-auto space-y-2">
+                <span class="text-xs font-bold tracking-widest text-gray-400 uppercase">Aviation Leadership</span>
+                <h2 class="font-syne font-extrabold text-3xl text-jet">EXECUTIVE COMMAND TEAM</h2>
+                <p class="text-xs text-gray-500">Guided by seasoned aviation captains, aerospace architects, and hospitality leaders.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-box p-6 rounded-3xl space-y-4 text-center">
+                    <div class="w-24 h-24 rounded-full overflow-hidden mx-auto border-2 border-jet shadow-md">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover" alt="Dr. Alexander Rauf">
+                    </div>
+                    <div>
+                        <h3 class="font-syne font-bold text-lg text-jet">Dr. Alexander Rauf</h3>
+                        <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200">Founder & Chief Operations Officer</span>
+                    </div>
+                    <p class="text-xs text-gray-600">Former senior flight test captain with over 18,000 flight hours across Airbus & Boeing flagships.</p>
+                </div>
+
+                <div class="glass-box p-6 rounded-3xl space-y-4 text-center">
+                    <div class="w-24 h-24 rounded-full overflow-hidden mx-auto border-2 border-jet shadow-md">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover" alt="Elena Vance">
+                    </div>
+                    <div>
+                        <h3 class="font-syne font-bold text-lg text-jet">Lady Elena Vance</h3>
+                        <span class="text-[10px] font-bold text-amber-700 bg-amber-50 px-2.5 py-1 rounded-md border border-amber-200">Head of In-Flight Hospitality</span>
+                    </div>
+                    <p class="text-xs text-gray-600">Renowned luxury hotelier responsible for Rauf Airlines' 5-star culinary partnerships & cabin suites.</p>
+                </div>
+
+                <div class="glass-box p-6 rounded-3xl space-y-4 text-center">
+                    <div class="w-24 h-24 rounded-full overflow-hidden mx-auto border-2 border-jet shadow-md">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover" alt="Capt. Julian Sterling">
+                    </div>
+                    <div>
+                        <h3 class="font-syne font-bold text-lg text-jet">Capt. Julian Sterling</h3>
+                        <span class="text-[10px] font-bold text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded-md border border-indigo-200">Director of Airfield Safety</span>
+                    </div>
+                    <p class="text-xs text-gray-600">Leads transatlantic flight telemetry, automated flight guidance systems, and crew safety protocols.</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="relative z-20 border-t border-gray-300/50 bg-nude-50/80 backdrop-blur-md py-6 px-6 mt-12">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500 font-medium">
+            <span class="font-syne font-bold text-jet text-sm">RAUF AIRLINES CORPORATE HEADQUARTERS</span>
+            <span>© 2026 Rauf Airlines International. All Rights Reserved.</span>
+        </div>
+    </footer>
+
+    <!-- External JavaScript Controllers -->
+    <script src="js/main.js"></script>
+</body>
+</html>
